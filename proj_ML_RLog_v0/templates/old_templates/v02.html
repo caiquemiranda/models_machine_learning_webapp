@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web App de Regressão Logística</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .form-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="form-wrapper p-4">
+                    <h1 class="mb-4">Web App de Regressão Logística</h1>
+                    <form method="post" action="/predict">
+                        <div class="mb-3">
+                            <label for="caracteristica" class="form-label">Insira o valor da característica:</label>
+                            <input type="text" class="form-control" id="caracteristica" name="caracteristica" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Prever</button>
+                    </form>
+                    {% if mensagem %}
+                        <div class="error mt-3">{{ mensagem }}</div>
+                    {% endif %}
+                    {% if previsao %}
+                        <div class="result mt-4">Resultado da Previsão: {{ previsao }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

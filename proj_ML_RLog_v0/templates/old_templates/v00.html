@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web App de Regressão Logística</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        .form-wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-wrapper">
+                    <h1>Web App de Regressão Logística</h1>
+                    <form method="post" action="/predict">
+                        <div class="form-group">
+                            <label for="caracteristica">Insira o valor da característica:</label>
+                            <input type="text" class="form-control" id="caracteristica" name="caracteristica" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Prever</button>
+                    </form>
+                    {% if mensagem %}
+                    <div class="alert alert-danger mt-3">{{ mensagem }}</div>
+                    {% endif %}
+                    {% if previsao %}
+                    <h2 class="mt-4">Resultado da Previsão:</h2>
+                    <div class="alert alert-success">{{ previsao }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -17,7 +17,7 @@
         }
 
         .container {
-            max-width: 400px;
+            max-width: 600px;
         }
 
         .mt-5 {
@@ -49,6 +49,12 @@
                         <p class="lead">Entrada: {{ entrada }}</p>
                         <p class="lead">Previsão: {{ previsao }}</p>
                     </div>
+                    {% if grafico is not none %}
+                    <div class="mt-4">
+                        <h5>Gráfico da Previsão:</h5>
+                        <img src="data:image/png;base64,{{ grafico }}" class="img-fluid" alt="Gráfico da Previsão">
+                    </div>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>

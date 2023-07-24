@@ -7,9 +7,7 @@ import yfinance as yf
 ticker = "AAPL"
 
 # Obter dados financeiros da ação utilizando a biblioteca yfinance
-dados_acao = yf.download(ticker, 
-                         start="2022-01-01", 
-                         end="2023-06-01")
+dados_acao = yf.download(ticker, start="2022-01-01", end="2023-01-01")
 
 # Criar o gráfico de candlesticks
 grafico_candlestick = go.Figure(data=[go.Candlestick(x=dados_acao.index,

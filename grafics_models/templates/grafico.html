@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Vendas</title>
+    <!-- Importar bibliotecas do Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Gráfico de Vendas por Mês</h1>
+    <!-- Div onde o gráfico será renderizado -->
+    <div id="grafico" style="width: 800px; height: 400px;"></div>
+
+    <script type="text/javascript">
+        // Obter o JSON do gráfico gerado pelo Flask
+        var grafico_json = {{ grafico_json | safe }};
+
+        // Renderizar o gráfico com o Plotly
+        Plotly.newPlot('grafico', JSON.parse(grafico_json));
+    </script>
+</body>
+</html>

@@ -1,31 +1,32 @@
 import dash
 from dash import dcc, html
 import plotly.graph_objs as go
+import yfinance as yf
 
-# Dados de exemplo atualizados
-dados_exemplo = {
-    'meses': ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
-    'vendas_produto_a': [100, 120, 90, 150, 80],
-    'vendas_produto_b': [80, 100, 110, 90, 120]
-}
+# Definir o ticker da ação (substitua "AAPL" pelo ticker da ação de sua escolha)
+ticker = "AAPL"
+
+# Obter dados financeiros da ação utilizando a biblioteca yfinance
+dados_acao = yf.download(ticker, 
+                         start="2022-01-01", 
+                         end="2023-06-01")
 
 # Inicializar a aplicação Dash
 app = dash.Dash(__name__)
 
 # Definir layout da aplicação
 app.layout = html.Div([
-    html.H1('Gráfico de Vendas por Mês - Produto A vs Produto B'),
+    html.H1(f'Variação do Preço da Ação {ticker}'),
     dcc.Graph(
-        id='grafico-vendas',
+        id='grafico-acao',
         figure={
             'data': [
-                go.Bar(x=dados_exemplo['meses'], y=dados_exemplo['vendas_produto_a'], name='Produto A'),
-                go.Bar(x=dados_exemplo['meses'], y=dados_exemplo['vendas_produto_b'], name='Produto B')
+                go.Scatter(x=dados_acao.index, y=dados_acao['Close'], mode='lines', name='Preço de Fechamento')
             ],
             'layout': go.Layout(
-                xaxis={'title': 'Mês'},
-                yaxis={'title': 'Vendas'},
-                barmode='stack'
+                xaxis={'title': 'Data'},
+                yaxis={'title': 'Preço de Fechamento'},
+                hovermode='x'
             )
         }
     )

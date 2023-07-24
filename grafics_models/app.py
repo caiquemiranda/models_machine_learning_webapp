@@ -44,7 +44,7 @@ def criar_grafico_linha(dados_acao, ticker):
     return grafico
 
 # Inicializar a aplicação Dash
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOO])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Definir layout da aplicação
 app.layout = dbc.Container([

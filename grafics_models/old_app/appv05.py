@@ -27,7 +27,7 @@ grafico_candlestick.update_layout(
 )
 
 # Inicializar a aplicação Dash
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BULMA])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Definir layout da aplicação
 app.layout = dbc.Container([

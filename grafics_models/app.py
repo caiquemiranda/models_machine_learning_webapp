@@ -1,15 +1,7 @@
 from flask import Flask, render_template
 import plotly.graph_objs as go
-import pandas as pd
 
 app = Flask(__name__)
-"""
-# Dados de exemplo (você pode substituí-los pelos seus próprios dados)
-dados_exemplo = {
-    'meses': ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
-    'vendas': [100, 150, 200, 120, 180]
-}
-"""
 
 # Dados de exemplo atualizados
 dados_exemplo = {
@@ -18,12 +10,10 @@ dados_exemplo = {
     'vendas_produto_b': [80, 100, 110, 90, 120]
 }
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/grafico')
 @app.route('/grafico')
 def gerar_grafico():
     meses = dados_exemplo['meses']

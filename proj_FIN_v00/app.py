@@ -4,12 +4,13 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.graph_objs as go
+from dash.dependencies import Input, Output
 
 # Ações para análise
 acoes = ['AAPL', 'MSFT']
 
 # Obtendo os dados históricos das ações
-dados_acoes = yf.download(acoes, start='2022-01-01', end='2023-01-01')
+dados_acoes = yf.download(acoes, start='2023-01-01', end='2023-03-01')
 
 # Criando o aplicativo Flask com Dash
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -22,7 +23,7 @@ app.layout = html.Div([
 
 @app.callback(
     Output('candlestick-plot', 'figure'),
-    [dash.dependencies.Input('candlestick-plot', 'relayoutData')]
+    [Input('candlestick-plot', 'relayoutData')]
 )
 def update_candlestick_plot(relayout_data):
     return {

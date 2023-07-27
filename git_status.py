@@ -1,7 +1,7 @@
 import subprocess
 from time import sleep
 
-for i in range(1, 30):
+for i in range(1, 300):
         
     # Executa o comando de commit
     subprocess.run('git add .', shell=True)

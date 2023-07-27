@@ -21,13 +21,18 @@ candlestick = go.Candlestick(x=dados_acao.index,
                              close=dados_acao['Close'],
                              name=acao)
 
+# Criando o gráfico de barras para o volume
+volume = go.Bar(x=dados_acao.index,
+                y=dados_acao['Volume'],
+                name='Volume')
+
 # Criando as linhas para as médias móveis
 ma9 = go.Scatter(x=dados_acao.index, y=dados_acao['MA9'], line=dict(color='blue', width=1.5), name='MA9')
 ma21 = go.Scatter(x=dados_acao.index, y=dados_acao['MA21'], line=dict(color='orange', width=1.5), name='MA21')
 
 # Criando a figura com os gráficos de candles, volume e médias móveis
-figura = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.05,
-                       row_heights=[0.5, 0.2, 0.2])
+figura = make_subplots(rows=2, cols=1, shared_xaxes=True, vertical_spacing=0.05,
+                       row_heights=[0.7, 0.3])
 
 figura.add_trace(candlestick, row=1, col=1)
 figura.add_trace(volume, row=2, col=1)
@@ -37,6 +42,7 @@ figura.add_trace(ma21, row=1, col=1)
 # Atualizando o layout do gráfico
 figura.update_layout(title=f'Gráfico de Candles, Volume e Médias Móveis da Ação {acao}',
                      xaxis_title='Data',
+                     yaxis_title='Preço',
                      xaxis_rangeslider_visible=False)
 
 # Criando o aplicativo Flask

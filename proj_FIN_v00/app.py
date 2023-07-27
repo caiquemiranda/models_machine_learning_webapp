@@ -10,7 +10,7 @@ from dash.dependencies import Input, Output  # Importação corrigida
 acoes = ['AAPL', 'GOOGL', 'MSFT', 'AMZN']
 
 # Obtendo os dados históricos das ações
-dados_acoes = yf.download(acoes, start='2022-01-01', end='2023-01-01')
+dados_acoes = yf.download(acoes, start='2023-01-01', end='2023-03-01')
 
 # Renomear as colunas para que o nome da ação seja o nível superior das colunas
 dados_acoes.columns = dados_acoes.columns.swaplevel(0, 1)

@@ -1,39 +1,38 @@
 import yfinance as yf
-import plotly.graph_objs as go
-from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 from flask import Flask, render_template
 
-# Obtendo os dados históricos da ação do Facebook
-acao_facebook = yf.download('FB', start='2022-01-01', end='2023-01-01')
+# Ação para análise
+acao = 'AAPL'  # Altere para a ação desejada
+
+# Obtendo os dados históricos da ação
+dados_acao = yf.download(acao, start='2022-01-01', end='2023-01-01')
+
+# Criando o gráfico de candles
+candlestick = go.Candlestick(x=dados_acao.index,
+                             open=dados_acao['Open'],
+                             high=dados_acao['High'],
+                             low=dados_acao['Low'],
+                             close=dados_acao['Close'],
+                             name=acao)
+
+# Layout do gráfico
+layout = go.Layout(title=f'Gráfico de Candles da Ação {acao}',
+                   xaxis=dict(title='Data'),
+                   yaxis=dict(title='Preço'))
+
+# Criando a figura com o gráfico de candles
+figura = go.Figure(data=[candlestick], layout=layout)
 
 # Criando o aplicativo Flask
 app = Flask(__name__)
 
-# Rota para renderizar o gráfico de candles da ação do Facebook
+# Rota para renderizar o template com o gráfico
 @app.route('/')
-def plot_candlestick():
-    fig = make_subplots(rows=2, cols=1, shared_xaxes=True, vertical_spacing=0.05)
-
-    # Gráfico de candles
-    fig.add_trace(go.Candlestick(x=acao_facebook.index,
-                                 open=acao_facebook['Open'],
-                                 high=acao_facebook['High'],
-                                 low=acao_facebook['Low'],
-                                 close=acao_facebook['Close'],
-                                 name='FB'), row=1, col=1)
-
-    # Gráfico de volume
-    fig.add_trace(go.Bar(x=acao_facebook.index,
-                         y=acao_facebook['Volume'],
-                         name='Volume'), row=2, col=1)
-
-    fig.update_layout(title='Gráfico de Candles e Volume da Ação do Facebook (FB)',
-                      xaxis_title='Data',
-                      yaxis_title='Preço',
-                      yaxis2_title='Volume',
-                      showlegend=False)
-
-    return render_template('candlestick_plot.html', plot=fig.to_html())
+def renderizar_template():
+    # Converte a figura para HTML e passa para o template
+    grafico_html = figura.to_html(full_html=False, include_plotlyjs='cdn')
+    return render_template('grafico.html', grafico_html=grafico_html)
 
 if __name__ == '__main__':
     app.run(debug=True)

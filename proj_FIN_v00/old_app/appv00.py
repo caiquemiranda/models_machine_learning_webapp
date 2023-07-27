@@ -30,12 +30,6 @@ app.layout = html.Div([
         start_date=dados_acoes.index.min(),
         end_date=dados_acoes.index.max(),
         display_format='DD/MM/YYYY'
-    ),
-    dcc.Dropdown(
-        id='acoes-dropdown',
-        options=[{'label': acao, 'value': acao} for acao in acoes],
-        value=acoes,
-        multi=True
     )
 ])
 
@@ -44,14 +38,10 @@ app.layout = html.Div([
      Output('correlacao-matrix-plot', 'figure'),
      Output('estatisticas-tabela', 'children')],
     [Input('date-picker-range', 'start_date'),
-     Input('date-picker-range', 'end_date'),
-     Input('acoes-dropdown', 'value')]
+     Input('date-picker-range', 'end_date')]
 )
-def update_graph(start_date, end_date, acoes_selecionadas):
+def update_graph(start_date, end_date):
     df_selected_period = dados_acoes.loc[start_date:end_date]
-
-    # Filtrando as ações selecionadas
-    df_selected_period = df_selected_period[acoes_selecionadas]
 
     # Plot dos retornos diários
     retorno_diario_plot = {
@@ -60,7 +50,7 @@ def update_graph(start_date, end_date, acoes_selecionadas):
             for acao in df_selected_period.columns
         ],
         'layout': {
-            'title': 'Retornos Diários das Ações Selecionadas',
+            'title': 'Retornos Diários das Ações',
             'xaxis': {'title': 'Data'},
             'yaxis': {'title': 'Retorno Diário'}
         }
@@ -72,14 +62,14 @@ def update_graph(start_date, end_date, acoes_selecionadas):
         'data': [
             {
                 'z': correlacao.values.tolist(),
-                'x': acoes_selecionadas,
-                'y': acoes_selecionadas,
+                'x': acoes,
+                'y': acoes,
                 'type': 'heatmap',
                 'colorscale': 'Viridis',
             }
         ],
         'layout': {
-            'title': 'Matriz de Correlação entre as Ações Selecionadas'
+            'title': 'Matriz de Correlação entre as Ações'
         }
     }
 

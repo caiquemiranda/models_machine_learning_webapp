@@ -8,7 +8,7 @@ from flask import Flask, render_template
 acao = 'AAPL'  # Altere para a ação desejada
 
 # Obtendo os dados históricos da ação
-dados_acao = yf.download(acao, start='2022-01-01', end='2023-01-01')
+dados_acao = yf.download(acao, start='2023-01-01', end='2023-06-01')
 
 # Calculando as médias móveis de 9 e 21 períodos
 dados_acao['MA9'] = dados_acao['Close'].rolling(window=9).mean()

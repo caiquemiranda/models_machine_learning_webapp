@@ -96,7 +96,16 @@ def renderizar_grafico():
             linha = float(request.form['linha'])
     
     # Criar uma nova figura para evitar conflito com gráficos anteriores
-    nova_figura = figura.copy()
+    nova_figura = make_subplots(rows=3, 
+                                cols=1, 
+                                shared_xaxes=True, 
+                                vertical_spacing=0.05,
+                                row_heights=[0.6, 0.2, 0.2],
+                                subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
+
+    # Adicionar os traços existentes na nova figura
+    for trace in figura.data:
+        nova_figura.add_trace(trace, row=trace.row, col=trace.col)
 
     # Adicionar a linha no gráfico de candles, se o valor estiver definido
     if linha is not None:
@@ -105,6 +114,9 @@ def renderizar_grafico():
                                       line=dict(color='red', dash='dash'),
                                       name='Linha')
         nova_figura.add_trace(linha_horizontal, row=1, col=1)
+
+    # Atualizar o layout da nova figura
+    nova_figura.update_layout(figura.layout)
 
     # Mostrar a figura atualizada
     plot_html = nova_figura.to_html()

@@ -32,15 +32,15 @@ volume = go.Bar(x=dados_acao.index,
                 name='Volume')
 
 # Criando as linhas para as médias móveis
-ma9 = go.Scatter(x=dados_acao.index, y=dados_acao['MA9'], line=dict(color='blue', width=1.5), name='MA9')
+ma9 = go.Scatter(x=dados_acao.index, y=dados_acao['MA9'], line=dict(color='blue', width=0.75), name='MA9')
 ma21 = go.Scatter(x=dados_acao.index, y=dados_acao['MA21'], line=dict(color='orange', width=1.5), name='MA21')
 
 # Criando o gráfico de linha para o RSI
 rsi = go.Scatter(x=dados_acao.index, y=dados_acao['RSI'], line=dict(color='green', width=1.5), name='RSI')
 
 # Criando a figura com os gráficos de candles, volume, médias móveis e RSI
-figura = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.05,
-                       row_heights=[0.5, 0.2, 0.2])
+figura = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.01,
+                       row_heights=[0.8, 0.1, 0.1])
 
 figura.add_trace(candlestick, row=1, col=1)
 figura.add_trace(volume, row=2, col=1)

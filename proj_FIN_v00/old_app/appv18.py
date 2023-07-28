@@ -95,19 +95,26 @@ def renderizar_grafico():
         if 'linha' in request.form:
             linha = float(request.form['linha'])
     
-    # Criar uma nova figura para evitar conflito com gráficos anteriores
-    nova_figura = make_subplots(rows=3, 
-                                cols=1, 
-                                shared_xaxes=True, 
-                                vertical_spacing=0.05,
-                                row_heights=[0.6, 0.2, 0.2],
-                                subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
+    # Criar a figura com os gráficos de candles, volume, médias móveis e RSI
+    figura = make_subplots(rows=3, 
+                           cols=1, 
+                           shared_xaxes=True, 
+                           vertical_spacing=0.05,
+                           row_heights=[0.6, 0.2, 0.2],
+                           subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
 
-    # Adicionar os traços existentes na nova figura
-    for trace in figura.data:
-        nova_figura.add_trace(trace, row=trace.row, col=trace.col)
+    figura.add_trace(candlestick, row=1, col=1)
+    figura.add_trace(volume, row=2, col=1)
+    figura.add_trace(ma9, row=1, col=1)
+    figura.add_trace(ma21, row=1, col=1)
+    figura.add_trace(rsi, row=3, col=1)
 
-    # Adicionar a linha no gráfico de candles, se o valor estiver definido
+    # Criar uma nova figura para adicionar a linha horizontal
+    nova_figura = make_subplots(rows=1, 
+                                cols=1,
+                                subplot_titles=("Linha",))
+
+    # Adicionar a linha no subplot da nova figura
     if linha is not None:
         linha_horizontal = go.Scatter(x=dados_acao.index,
                                       y=[linha] * len(dados_acao),
@@ -116,13 +123,37 @@ def renderizar_grafico():
         nova_figura.add_trace(linha_horizontal, row=1, col=1)
 
     # Atualizar o layout da nova figura
-    nova_figura.update_layout(figura.layout)
+    nova_figura.update_layout(showlegend=False,  # Não mostrar legenda na nova figura
+                              width=1000,         # Ajustar a largura da nova figura
+                              height=100          # Ajustar a altura da nova figura
+    )
 
-    # Mostrar a figura atualizada
-    plot_html = nova_figura.to_html()
+    # Combinar a nova figura com a figura original
+    figura.add_trace(nova_figura.data[0], row=3, col=1)
 
-    return render_template('grafico_candles.html', acao=acao, plot=plot_html)
+    # Atualizando o layout do gráfico
+    figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
+                         xaxis_title='Data',
+                         xaxis_rangeslider_visible=False,
+                         width=1000,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
+                         height=800,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)
+                         font=dict(family='Arial', size=12),  # Estilo de fonte dos textos do gráfico
+                         paper_bgcolor='rgba(0,0,0,0)',  # Fundo transparente
+                         plot_bgcolor='rgba(0,0,0,0)',   # Fundo transparente
+                         hovermode='x unified',  # Mostrar dicas de ferramentas de forma unificada
+                         legend=dict(font=dict(family='Arial', size=12),  # Estilo de fonte da legenda
+                                     bgcolor='rgba(0,0,0,0)'  # Fundo transparente para a legenda
+                         ),
+                         xaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo x
+                         yaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo y
+                         margin=dict(l=50, r=50, t=80, b=50)  # Ajustar as margens do gráfico
+    )
 
-# Executar o aplicativo Flask
+    # ... (restante do código)
+
+    return render_template('grafico_candles.html', acao=acao, plot=figura.to_html())
+
+# ... (código anterior)
+
 if __name__ == '__main__':
     app.run(debug=True)

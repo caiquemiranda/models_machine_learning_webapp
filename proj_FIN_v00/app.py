@@ -99,7 +99,7 @@ rsi = go.Scatter(x=dados_acao.index,
 figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
                      xaxis_title='Data',
                      xaxis_rangeslider_visible=False,
-                     width=1000,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
+                     width=1200,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
                      height=500,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)
                      font=dict(family='Arial', size=12),  # Estilo de fonte dos textos do gráfico
                      paper_bgcolor='rgba(0,0,0,0)',  # Fundo transparente

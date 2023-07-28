@@ -55,7 +55,8 @@ figura = make_subplots(rows=3,
                        shared_xaxes=True, 
                        vertical_spacing=0.05,
                        row_heights=[0.7, 0.15, 0.15],
-                       subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
+                       #subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI")
+                       )
 
 figura.add_trace(candlestick, row=1, col=1)
 figura.add_trace(volume, row=2, col=1)

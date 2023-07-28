@@ -53,8 +53,9 @@ rsi = go.Scatter(x=dados_acao.index,
 figura = make_subplots(rows=3, 
                        cols=1, 
                        shared_xaxes=True, 
-                       vertical_spacing=0.02,
-                       row_heights=[44.8, 0.1, 0.1])
+                       vertical_spacing=0.05,
+                       row_heights=[0.7, 0.15, 0.15],
+                       subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
 
 figura.add_trace(candlestick, row=1, col=1)
 #figura.add_trace(volume, row=2, col=1)
@@ -66,6 +67,17 @@ figura.add_trace(ma21, row=1, col=1)
 figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
                      xaxis_title='Data',
                      xaxis_rangeslider_visible=False)
+
+# Personalizando as cores das linhas e candles
+candlestick = go.Candlestick(x=dados_acao.index,
+                             open=dados_acao['Open'],
+                             high=dados_acao['High'],
+                             low=dados_acao['Low'],
+                             close=dados_acao['Close'],
+                             name=acao,
+                             increasing_line_color='blue',  # Cor das candles de alta
+                             decreasing_line_color='red'    # Cor das candles de baixa
+)
 
 # Personalizando as cores das médias móveis e RSI
 ma9 = go.Scatter(x=dados_acao.index, 

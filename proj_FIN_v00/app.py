@@ -98,17 +98,20 @@ rsi = go.Scatter(x=dados_acao.index,
 
 # Atualizando o layout do gráfico
 figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
-                     #xaxis_title='Data',
+                     xaxis_title='Data',
                      xaxis_rangeslider_visible=False,
-                     width=1200,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
-                     height=500,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)
+                     width=1000,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
+                     height=800,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)
                      font=dict(family='Arial', size=12),  # Estilo de fonte dos textos do gráfico
                      paper_bgcolor='rgba(0,0,0,0)',  # Fundo transparente
                      plot_bgcolor='rgba(0,0,0,0)',   # Fundo transparente
                      hovermode='x unified',  # Mostrar dicas de ferramentas de forma unificada
                      legend=dict(font=dict(family='Arial', size=12),  # Estilo de fonte da legenda
                                  bgcolor='rgba(0,0,0,0)'  # Fundo transparente para a legenda
-                     )
+                     ),
+                     xaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo x
+                     yaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo y
+                     margin=dict(l=50, r=50, t=80, b=50)  # Ajustar as margens do gráfico
 )
 
 # Criando o aplicativo Flask

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gráfico {{ acao }}</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {{ acao }}</title>
+    <!-- Insira aqui os links para os arquivos CSS e JS do Plotly -->
 </head>
 <body>
-    <h1>Gráfico {{ acao }}</h1>
-    <div>
-        {{ plot | safe }}
-    </div>
+    <h1>Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {{ acao }}</h1>
+    <form method="POST">
+        <label for="linha">Insira o valor da linha:</label>
+        <input type="number" name="linha" id="linha">
+        <input type="submit" value="Adicionar linha">
+    </form>
+    <!-- Renderizar o gráfico -->
+    {{ plot | safe }}
 </body>
 </html>

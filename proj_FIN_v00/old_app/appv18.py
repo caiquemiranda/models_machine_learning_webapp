@@ -2,7 +2,7 @@ import yfinance as yf
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from ta.momentum import RSIIndicator
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 # Ação para análise
 acao = 'AAPL'  # Altere para a ação desejada

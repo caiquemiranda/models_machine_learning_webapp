@@ -50,7 +50,7 @@ rsi = go.Scatter(x=dados_acao.index,
                  name='RSI')
 
 # Criando a figura com os gráficos de candles, volume, médias móveis e RSI
-figura = make_subplots(rows=3, 
+figura = make_subplots(rows=2, 
                        cols=1, 
                        shared_xaxes=True, 
                        vertical_spacing=0.02,

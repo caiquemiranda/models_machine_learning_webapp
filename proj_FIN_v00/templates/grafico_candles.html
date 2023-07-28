@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Gráfico de Candles</title>
+    <title>Gráfico {{ acao }}</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <h1>Gráfico de Candles da Ação {{ acao }}</h1>
+    <h1>Gráfico {{ acao }}</h1>
     <div>
         {{ plot | safe }}
     </div>

@@ -58,10 +58,10 @@ figura = make_subplots(rows=3,
                        subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
 
 figura.add_trace(candlestick, row=1, col=1)
-#figura.add_trace(volume, row=2, col=1)
+figura.add_trace(volume, row=2, col=1)
 figura.add_trace(ma9, row=1, col=1)
 figura.add_trace(ma21, row=1, col=1)
-#figura.add_trace(rsi, row=3, col=1)
+figura.add_trace(rsi, row=3, col=1)
 
 # Atualizando o layout do gráfico
 figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
@@ -100,7 +100,7 @@ figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI 
                      xaxis_title='Data',
                      xaxis_rangeslider_visible=False,
                      width=1000,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
-                     height=800,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)
+                     height=500,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)
                      font=dict(family='Arial', size=12),  # Estilo de fonte dos textos do gráfico
                      paper_bgcolor='rgba(0,0,0,0)',  # Fundo transparente
                      plot_bgcolor='rgba(0,0,0,0)',   # Fundo transparente

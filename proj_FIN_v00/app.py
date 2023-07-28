@@ -46,7 +46,7 @@ figura.add_trace(candlestick, row=1, col=1)
 figura.add_trace(volume, row=2, col=1)
 figura.add_trace(ma9, row=1, col=1)
 figura.add_trace(ma21, row=1, col=1)
-figura.add_trace(rsi, row=3, col=1)
+#figura.add_trace(rsi, row=3, col=1)
 
 # Atualizando o layout do gráfico
 figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',

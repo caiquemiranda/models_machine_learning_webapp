@@ -129,7 +129,7 @@ def renderizar_grafico():
     )
 
     # Combinar a nova figura com a figura original
-    figura.add_trace(nova_figura.data[0], row=3, col=1)
+    figura.add_trace(nova_figura.data[0], row=2, col=1)  # Adicionar a linha ao subplot das Médias Móveis
 
     # Atualizando o layout do gráfico
     figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',

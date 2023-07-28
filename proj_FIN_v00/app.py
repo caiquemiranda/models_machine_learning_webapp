@@ -39,11 +39,11 @@ ma21 = go.Scatter(x=dados_acao.index, y=dados_acao['MA21'], line=dict(color='ora
 rsi = go.Scatter(x=dados_acao.index, y=dados_acao['RSI'], line=dict(color='green', width=1.5), name='RSI')
 
 # Criando a figura com os gráficos de candles, volume, médias móveis e RSI
-figura = make_subplots(rows=3, cols=1, shared_xaxes=True, vertical_spacing=0.02,
+figura = make_subplots(rows=5, cols=1, shared_xaxes=True, vertical_spacing=0.02,
                        row_heights=[0.8, 0.1, 0.1])
 
 figura.add_trace(candlestick, row=1, col=1)
-figura.add_trace(volume, row=2, col=1)
+#figura.add_trace(volume, row=2, col=1)
 figura.add_trace(ma9, row=1, col=1)
 figura.add_trace(ma21, row=1, col=1)
 #figura.add_trace(rsi, row=3, col=1)

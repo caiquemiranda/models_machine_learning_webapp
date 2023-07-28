@@ -71,8 +71,8 @@ figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI 
 figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
                      xaxis_title='Data',
                      xaxis_rangeslider_visible=False,
-                     width=700,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
-                     height=500   # Ajuste a altura da figura (aumente ou diminua conforme necessário)
+                     width=1000,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
+                     height=800   # Ajuste a altura da figura (aumente ou diminua conforme necessário)
 )
 
 # Criando o aplicativo Flask

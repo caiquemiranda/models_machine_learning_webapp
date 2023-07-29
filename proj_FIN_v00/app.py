@@ -59,7 +59,8 @@ def criar_grafico_acao(acao):
                            shared_xaxes=True, 
                            vertical_spacing=0.05,
                            row_heights=[0.6, 0.2, 0.2],
-                           subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI"))
+                           #subplot_titles=("Gráfico de Candles", "Volume", "Médias Móveis", "RSI")
+                           )
 
     figura.add_trace(candlestick, row=1, col=1)
     figura.add_trace(volume, row=2, col=1)
@@ -69,7 +70,7 @@ def criar_grafico_acao(acao):
 
     # Atualizando o layout do gráfico
     figura.update_layout(title=f'Gráfico de Candles, Volume, Médias Móveis e RSI da Ação {acao}',
-                         xaxis_title='Data',
+                         #xaxis_title='Data',
                          xaxis_rangeslider_visible=False,
                          width=1000,  # Ajuste a largura da figura (aumente ou diminua conforme necessário)
                          height=800,  # Ajuste a altura da figura (aumente ou diminua conforme necessário)

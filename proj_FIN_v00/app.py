@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from ta.momentum import RSIIndicator
 from flask import Flask, render_template, request
+import 
 
 # Criando o aplicativo Flask
 app = Flask(__name__)

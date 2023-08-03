@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # Função para criar o gráfico com os dados da ação
 def criar_grafico_acao(acao):
-    start = '2018-06-01'
+    start = '2019-06-01'
     end = datetime.today()
     
     # Obtendo os dados históricos da ação

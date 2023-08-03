@@ -3,13 +3,14 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from ta.momentum import RSIIndicator
 from flask import Flask, render_template, request
-import 
+from datetime import datetime
 
 # Criando o aplicativo Flask
 app = Flask(__name__)
 
 # Função para criar o gráfico com os dados da ação
 def criar_grafico_acao(acao):
+    today = datetime.today()
     # Obtendo os dados históricos da ação
     dados_acao = yf.download(acao, start='2023-01-01', end='2023-06-01')
 

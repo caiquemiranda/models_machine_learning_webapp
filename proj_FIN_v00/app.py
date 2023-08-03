@@ -10,9 +10,11 @@ app = Flask(__name__)
 
 # Função para criar o gráfico com os dados da ação
 def criar_grafico_acao(acao):
-    today = datetime.today()
+    start = '2018-06-01'
+    end = datetime.today()
+    
     # Obtendo os dados históricos da ação
-    dados_acao = yf.download(acao, start='2023-01-01', end='2023-06-01')
+    dados_acao = yf.download(acao, start=start, end=end)
 
     # Calculando as médias móveis de 9 e 21 períodos
     dados_acao['MA9'] = dados_acao['Close'].rolling(window=9).mean()

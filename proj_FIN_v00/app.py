@@ -74,14 +74,15 @@ def criar_grafico_acao(acao):
                          xaxis_rangeslider_visible=False,
                          width=1000, 
                          height=800, 
-                         font=dict(family='Arial', size=12),  # Estilo de fonte dos textos do gráfico
-                         paper_bgcolor='rgba(0,0,0,0)',  # Fundo transparente
-                         plot_bgcolor='rgba(0,0,0,0)',   # Fundo transparente
-                         hovermode='x unified',  # Mostrar dicas de ferramentas de forma unificada
-                         legend=dict(font=dict(family='Arial', size=12),  # Estilo de fonte da legenda
-                                     bgcolor='rgba(0,0,0,0)'  # Fundo transparente para a legenda
-                         ),
-                         xaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo x
+                         font=dict(family='Arial', size=12),  
+                         paper_bgcolor='rgba(0,0,0,0)',  
+                         plot_bgcolor='rgba(0,0,0,0)',   
+                         hovermode='x unified',  
+                         legend=dict(font=dict(family='Arial', size=12),  
+                                     bgcolor='rgba(0,0,0,0)'),
+                         
+                         xaxis=dict(showgrid=True, 
+                                    gridcolor='lightgray'),  # Adicionar grid no eixo x
                          yaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo y
                          margin=dict(l=50, r=50, t=80, b=50)  # Ajustar as margens do gráfico
     )

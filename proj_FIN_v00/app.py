@@ -83,7 +83,10 @@ def criar_grafico_acao(acao):
                          
                          xaxis=dict(showgrid=True, 
                                     gridcolor='lightgray'),  # Adicionar grid no eixo x
-                         yaxis=dict(showgrid=True, gridcolor='lightgray'),  # Adicionar grid no eixo y
+                         
+                         yaxis=dict(showgrid=True, 
+                                    gridcolor='lightgray'),  # Adicionar grid no eixo y
+                         
                          margin=dict(l=50, r=50, t=80, b=50)  # Ajustar as margens do gráfico
     )
 
@@ -104,8 +107,11 @@ def renderizar_grafico():
     # Mostrar a figura atualizada
     plot_html = figura.to_html()
 
-    return render_template('grafico_candles.html', acao=acao, plot=plot_html)
+    return render_template('grafico_candles.html', 
+                           acao=acao, 
+                           plot=plot_html)
 
 # Executar o aplicativo Flask
 if __name__ == '__main__':
     app.run(debug=True)
+    
